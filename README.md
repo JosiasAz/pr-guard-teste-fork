@@ -57,3 +57,4 @@ O site fica em `https://<dono>.github.io/voidgate-frontend/`.
 ## Uso de IA
 
 O código e os textos deste repositório tiveram ajuda de IA.
+linha
