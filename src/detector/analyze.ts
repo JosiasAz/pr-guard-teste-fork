@@ -207,3 +207,6 @@ export function analyze(text: string): Analysis {
     forwarded: applyMasks(text, findings),
   }
 }
+
+import { isValidCpf } from './cpf.ts'
+export const cpfOk = (d: string) => isValidCpf(d)
