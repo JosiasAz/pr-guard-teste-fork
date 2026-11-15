@@ -1,0 +1,17 @@
+name: Approve (so no repo de teste)
+# simula "outro membro aprova": so existe neste repo de teste
+on:
+  workflow_dispatch:
+    inputs:
+      pr:
+        required: true
+permissions:
+  pull-requests: write
+jobs:
+  approve:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh pr review "$PR" -R "$GITHUB_REPOSITORY" --approve
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ inputs.pr }}
