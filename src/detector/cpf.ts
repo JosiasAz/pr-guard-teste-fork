@@ -14,6 +14,6 @@ export function isCpfValid(digits: string): boolean {
 }
 
 /** Keeps only the last two digits: 529.982.247-25 becomes ***.***.***-25. */
-export function maskCpf(digits: string): string {
+export function cpfMask(digits: string): string {
   return `***.***.***-${digits.slice(9)}`
 }
