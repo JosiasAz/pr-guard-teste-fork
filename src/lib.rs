@@ -32,7 +32,7 @@ impl AppState {
     }
 }
 
-pub fn app(state: AppState) -> Router {
+pub fn build_app(state: AppState) -> Router {
     let decisions = Router::new()
         .route("/v1/decisions/http", post(decide_http))
         .route_layer(middleware::from_fn_with_state(state.clone(), authorize));
@@ -102,10 +102,10 @@ mod tests {
     };
     use tower::ServiceExt;
 
-    use super::{app, AppState};
+    use super::{build_app, AppState};
 
     fn test_app() -> axum::Router {
-        app(
+        build_app(
             AppState::new("a".repeat(32), vec!["/internal/backup".into()])
                 .expect("valid test config"),
         )
