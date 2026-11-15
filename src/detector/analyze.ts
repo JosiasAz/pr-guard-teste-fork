@@ -1,4 +1,4 @@
-import { isValidCpf, maskCpf } from './cpf.ts'
+import { isCpfValid, maskCpf } from './cpf.ts'
 
 export type Verdict = 'allow' | 'mask' | 'block'
 
@@ -127,7 +127,7 @@ function findPersonalData(text: string): Finding[] {
   const findings: Finding[] = []
   for (const match of text.matchAll(CPF_PATTERN)) {
     const digits = match.slice(1, 5).join('')
-    if (isValidCpf(digits)) {
+    if (isCpfValid(digits)) {
       findings.push({
         kind: 'cpf',
         start: match.index,

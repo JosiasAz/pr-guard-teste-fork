@@ -1,5 +1,5 @@
 /** Returns true when the 11 digits form a CPF with valid check digits. */
-export function isValidCpf(digits: string): boolean {
+export function isCpfValid(digits: string): boolean {
   if (!/^\d{11}$/.test(digits)) return false
   // Sequences like 111.111.111-11 pass the checksum but are not real CPFs.
   if (/^(\d)\1{10}$/.test(digits)) return false
