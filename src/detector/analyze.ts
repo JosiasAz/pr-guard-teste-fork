@@ -1,4 +1,4 @@
-import { isCpfValid, maskCpf } from './cpf.ts'
+import { isCpfValid, cpfMask } from './cpf.ts'
 
 export type Verdict = 'allow' | 'mask' | 'block'
 
@@ -162,7 +162,7 @@ function applyMasks(text: string, findings: Finding[]): string {
     const original = text.slice(finding.start, finding.end)
     const replacement =
       finding.kind === 'cpf'
-        ? maskCpf(original.replace(/\D/g, ''))
+        ? cpfMask(original.replace(/\D/g, ''))
         : maskEmail(original)
     result =
       result.slice(0, finding.start) + replacement + result.slice(finding.end)
